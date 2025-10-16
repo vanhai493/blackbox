@@ -16,16 +16,19 @@ Dự án này tạo ra một bộ test tự động để:
 wikipedia-search-automation/
 ├── tests/
 │   ├── wikipedia_search.robot     # Test cases chính
-│   └── validation_tests.robot     # Test validation và boundary
+│   ├── validation_tests.robot     # Test validation và boundary
+│   └── petstore_api_tests.robot   # Test API demo Petstore với RequestsLibrary
 ├── resources/
 │   ├── keywords/
 │   │   ├── wikipedia_keywords.robot  # Keywords tùy chỉnh
-│   │   └── browser_config.robot      # Cấu hình browser
+│   │   ├── browser_config.robot      # Cấu hình browser
+│   │   └── petstore_api.robot        # Keywords cho Petstore API
 │   └── variables/
 │       └── test_data.robot        # Dữ liệu test và biến
 ├── requirements.txt               # Dependencies Python
 ├── run_tests.bat                 # Script chạy tất cả tests
 ├── run_single_test.bat           # Script chạy test đơn lẻ
+├── run_petstore_tests.bat        # Script chạy tests Petstore API
 └── README.md                     # Tài liệu dự án
 ```
 
@@ -53,11 +56,14 @@ Dự án sử dụng webdriver-manager để tự động quản lý driver, kh�
 
 ### Sử dụng batch scripts (Windows)
 ```cmd
-# Chạy tất cả tests
+# Chạy tất cả tests giao diện
 run_tests.bat
 
 # Chỉ chạy test tìm kiếm Apple
 run_single_test.bat
+
+# Chạy tests API Petstore (REST)
+run_petstore_tests.bat
 ```
 
 ### Chạy thủ công với Robot Framework
@@ -71,6 +77,7 @@ robot tests/
 ```bash
 robot tests/wikipedia_search.robot
 robot tests/validation_tests.robot
+robot tests/petstore_api_tests.robot
 ```
 
 #### Chạy với browser cụ thể
@@ -88,6 +95,7 @@ robot --variable HEADLESS:True tests/
 #### Chạy test case cụ thể
 ```bash
 robot --test "Search Apple On Wikipedia" tests/wikipedia_search.robot
+robot --test "Test POST - Create a New Pet" tests/petstore_api_tests.robot
 ```
 
 ## Kết quả Test
@@ -132,10 +140,16 @@ Nếu có vấn đề hoặc câu hỏi, vui lòng tạo issue trong repository.
 
 ## Tính năng chính
 
-### Test Cases
+### Test Cases - Wikipedia (UI)
 - **Search Apple On Wikipedia**: Test case chính tìm kiếm từ khóa "Apple"
 - **Search Multiple Keywords**: Test tìm kiếm nhiều từ khóa khác nhau
 - **Test Search Result Content Validation**: Kiểm tra chi tiết nội dung kết quả
+
+### Test Cases - Petstore API (REST)
+- **Test POST - Create a New Pet**: Tạo pet mới bằng POST request
+- **Test GET - Retrieve Pet by ID**: Lấy thông tin pet bằng GET request
+- **Test POST and GET Together**: Workflow hoàn chỉnh POST + GET
+- **Test Multiple Pets**: Tạo và kiểm tra nhiều pets với vòng lặp
 
 ### Validation Tests
 - **Test Invalid Search Keywords**: Kiểm tra với từ khóa không hợp lệ

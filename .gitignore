@@ -1,0 +1,32 @@
+# Robot Framework generated files
+log.html
+report.html
+output.xml
+selenium-screenshot-*.png
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test artifacts
+results/
+*.log
